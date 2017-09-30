@@ -4,13 +4,14 @@
 # The title of the project.
 # The date and time at which make was run.
 # The number of lines of code contained in guessinggame.sh.
-nlines=$(shell wc -l guessinggame.sh | egrep -o "[0-9]+")
+nlines=$(shell awk 'END{print NR}' guessinggame.sh)
 tod=$(shell date)
 
 README.md:
 	touch README.md
 	echo "# Unix workbench guessing game readme" >> README.md
 	echo "Make run on: $(tod)" >> README.md
+	echo ""
 	echo "There are $(nlines) lines in guessinggame.sh" >> README.md
 
 clean:
